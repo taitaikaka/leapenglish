@@ -53,9 +53,12 @@ if st.session_state.result:
     st.write(st.session_state.result)
 
 # 次に進むボタン
-if st.session_state.show_next and st.button("次に進む"):
+if st.button("次に進む") and st.session_state.show_next:
+    # 新しい問題を生成
     st.session_state.question, st.session_state.choices = generate_question(filtered_word_list)
-    st.session_state.result = ""  # 結果をリセット
+    # 結果をリセット
+    st.session_state.result = ""
+    # ボタンの状態をリセット
     st.session_state.show_next = False
 
 
