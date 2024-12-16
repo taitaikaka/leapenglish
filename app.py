@@ -2,32 +2,8 @@ import streamlit as st
 import pandas as pd
 import random
 
-# 生徒専用のユーザー名とパスワード
-AUTHORIZED_USER = {"username": "student", "password": "password123"}
 
-# ログイン機能
-def login():
-    st.sidebar.header("ログイン")
-    username = st.sidebar.text_input("ユーザー名")
-    password = st.sidebar.text_input("パスワード", type="password")
-    if st.sidebar.button("ログイン"):
-        if username == AUTHORIZED_USER["username"] and password == AUTHORIZED_USER["password"]:
-            st.session_state["logged_in"] = True
-        else:
-            st.sidebar.error("ユーザー名またはパスワードが間違っています。")
 
-# セッション状態の初期化
-if "logged_in" not in st.session_state:
-    st.session_state["logged_in"] = False
-
-# ログインしていない場合、ログイン画面を表示
-if not st.session_state["logged_in"]:
-    login()
-    st.stop()
-
-# ログイン後のアプリ本体
-st.title("英単語テスト")
-st.write("ログインしました！単語テストを始めましょう。")
 
 # CSVファイルの読み込み
 file_path = "leap_word_list.csv"
